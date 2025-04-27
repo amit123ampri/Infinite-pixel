@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Infinite Pixel</title>
+  <meta charset="UTF-8">
+  <title>Infinite Pixel - Search Engine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    #results {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Infinite Pixel!</h1>
-    <p>This page is made by Dr. Amit Maheshwari for students.</p>
+  <h1>🔎 Infinite Pixel Search</h1>
+  <p>Search your study material:</p>
+
+  <input type="text" id="searchInput" placeholder="Enter keywords">
+  <button onclick="search()">Search</button>
+
+  <div id="results"></div>
+
+  <script>
+    function search() {
+      var query = document.getElementById("searchInput").value.toLowerCase();
+      var output = "";
+
+      // Example searchable data (you can later connect this to real files)
+      var data = [
+        "Physics Chapter 1: Motion",
+        "Maths Chapter 2: Algebra",
+        "Chemistry Chapter 5: Chemical Reactions",
+        "Biology Chapter 3: Cells and Tissues",
+        "NCERT Class 11 Physics PDF"
+      ];
+
+      var results = data.filter(function(item) {
+        return item.toLowerCase().includes(query);
+      });
+
+      if (results.length > 0) {
+        output = "<ul>";
+        results.forEach(function(item) {
+          output += "<li>" + item + "</li>";
+        });
+        output += "</ul>";
+      } else {
+        output = "No results found.";
+      }
+
+      document.getElementById("results").innerHTML = output;
+    }
+  </script>
 </body>
 </html>
